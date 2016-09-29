@@ -16,7 +16,7 @@ import javax.xml.bind.Marshaller;
  *
  * @author matinal
  */
-public class Ejecucion {
+public class EjecucionMarshalling {
     public static void main(String[] args) {
         Producto p;
         Productos ps;
@@ -35,7 +35,7 @@ public class Ejecucion {
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             jaxbMarshaller.marshal(ps, new File("productos.xml"));
         } catch (JAXBException ex) {
-            Logger.getLogger(Ejecucion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EjecucionMarshalling.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
