@@ -18,12 +18,14 @@ import org.xml.sax.SAXException;
  */
 public class XmlParser {
     public static void main(String[] args) {
-        if (args.length > 1){
+        Document doc = null;
             try {
-                Document doc = DomUtil.parse(args[0], true);
+                doc = DomUtil.parse("productos.xml", false);  
             } catch (ParserConfigurationException | IOException | SAXException ex) {
                 System.err.println("ERROR : " + ex.getLocalizedMessage());
             }
-        }
+            System.out.println(RecursiveWalker.recursiveWalk(doc.getDocumentElement()));
+            
+        
     }
 }
