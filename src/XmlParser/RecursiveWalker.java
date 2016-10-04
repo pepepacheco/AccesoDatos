@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package XmlParser;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 /**
  *
  * @author matinal
@@ -35,18 +34,23 @@ public class RecursiveWalker {
             {
                 resultado+=recursiveWalk(childrens.item(i));           
             }
-        }else{
+        }
             //resultado += actual.getNodeType();
             if(actual.getNodeType()==Node.ELEMENT_NODE){
-                resultado += actual.getNodeName();
+                if (actual.hasAttributes()){
+                    for (int i = 0; i < actual.getAttributes().getLength(); i++) {
+                     Attr atributo = (Attr) actual.getAttributes().item(i);   
+                     resultado+="Elemento: "+ atributo.getName() + " Valor: " + atributo.getValue().trim() + " ";
+                    }
+                }
             }
             else if (actual.getNodeType()==Node.TEXT_NODE){
-                resultado+=actual.getTextContent();
+                if (actual.getNodeValue().trim().matches("")){}
+                else{
+                    resultado +=actual.getNodeName() + ": " +  actual.getNodeValue().trim()+ " ";
+                }
             }
-            else if(actual.getNodeType() == Node.ATTRIBUTE_NODE){
-                resultado+="Tag: " + actual.getLocalName() + "Value: " +actual.getNodeValue() ;
-            }
-        }
+            else{}
         return resultado;
     }
 }
