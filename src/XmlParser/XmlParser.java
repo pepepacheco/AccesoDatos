@@ -21,10 +21,12 @@ public class XmlParser {
         Document doc = null;
             try {
                 doc = DomUtil.parse("productos.xml", false);  
+                RecursiveWalker raiz = new RecursiveWalker(doc);
+                System.out.println(raiz.toString());
             } catch (ParserConfigurationException | IOException | SAXException ex) {
                 System.err.println("ERROR : " + ex.getLocalizedMessage());
             }
-            System.out.println(RecursiveWalker.recursiveWalk(doc.getDocumentElement()));
+            
             
         
     }
