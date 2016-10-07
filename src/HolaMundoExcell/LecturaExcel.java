@@ -35,7 +35,7 @@ public class LecturaExcel {
                 sh = wb.getSheetAt(i);
                 System.out.print("\n##Hoja: " + sh.getSheetName());
                 //Bucle para las filas
-                for (int j = 0; j < sh.getLastRowNum(); j++) {
+                for (int j = 0; j <= sh.getLastRowNum(); j++) {
                     row = sh.getRow(j);
                     System.out.print("\n");
                     //Bucle para las celdas
